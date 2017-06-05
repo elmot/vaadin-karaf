@@ -6,11 +6,12 @@
     <groupId>org.vaadin</groupId>
     <artifactId>vaadin-karaf</artifactId>
     <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
-    <name>vaadin karaf test</name>
+    <version>8.1.0.beta1</version>
+    <name>Vaadin Karaf Test</name>
 
     <modules>
-        <module>vaadin-karaf-bundle</module>
+        <module>vaadin-karaf-bundle1</module>
+        <module>vaadin-karaf-bundle2</module>
         <module>karaf-run</module>
     </modules>
 
@@ -19,7 +20,7 @@
     </prerequisites>
 
     <properties>
-        <vaadin.version>8.1.0.beta1</vaadin.version>
+        <vaadin.version>8.1-SNAPSHOT</vaadin.version>
         <vaadin.plugin.version>${vaadin.version}</vaadin.plugin.version>
         <karaf.plugin.version>4.0.8</karaf.plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

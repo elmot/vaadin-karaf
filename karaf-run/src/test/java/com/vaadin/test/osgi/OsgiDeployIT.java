@@ -1,20 +1,27 @@
 package com.vaadin.test.osgi;
 
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+@Ignore
 public class OsgiDeployIT {
     private static final String ROOT = "http://localhost:8181/";
     private static final String VERSION = System.getenv("vaadin.VERSION");
     private static final String RESOURCES = ROOT + "vaadin-" + VERSION + "/VAADIN/";
 
     @Test
-    public void themeAvailable() throws IOException {
+    public void valoThemeAvailable() throws IOException {
         checkAvailability(RESOURCES + "themes/valo/styles.css");
+    }
+
+    @Test
+    public void customThemeAvailable() throws IOException {
+        checkAvailability(RESOURCES + "themes/karaftesttheme/styles.css");
     }
 
     @Test
@@ -23,8 +30,18 @@ public class OsgiDeployIT {
     }
 
     @Test
-    public void appAvailable() throws IOException {
-        checkAvailability(ROOT + "myapp");
+    public void customWigdetsetAvailable() throws IOException {
+        checkAvailability(RESOURCES + "widgetsets/com.vaadin.test.osgi.widgetset.CustomWidgetSet/com.vaadin.test.osgi.widgetset.CustomWidgetSet.nocache.js");
+    }
+
+    @Test
+    public void app1Available() throws IOException {
+        checkAvailability(ROOT + "myapp1");
+    }
+
+    @Test
+    public void app2Available() throws IOException {
+        checkAvailability(ROOT + "myapp2");
     }
 
     @Test

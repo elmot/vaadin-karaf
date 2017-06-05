@@ -6,16 +6,13 @@
     <parent>
         <groupId>org.vaadin</groupId>
         <artifactId>vaadin-karaf</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>8.1-SNAPSHOT</version>
     </parent>
-    <artifactId>vaadin-karaf-bundle</artifactId>
+    <artifactId>vaadin-karaf-bundle1</artifactId>
     <packaging>jar</packaging>
-    <name>vaadin karaf test bundle</name>
+    <name>Vaadin Karaf test bundle 1</name>
 
     <properties>
-        <vaadin.version>8.1.0.beta1</vaadin.version>
-        <vaadin.plugin.version>8.1.0.beta1</vaadin.plugin.version>
-        <jetty.plugin.version>9.3.9.v20160517</jetty.plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -51,23 +48,23 @@
         <dependency>
             <groupId>com.vaadin</groupId>
             <artifactId>vaadin-server</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.vaadin</groupId>
-            <artifactId>vaadin-push</artifactId>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.vaadin</groupId>
             <artifactId>vaadin-client-compiled</artifactId>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.vaadin</groupId>
             <artifactId>vaadin-themes</artifactId>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.vaadin</groupId>
             <artifactId>vaadin-osgi-integration</artifactId>
             <version>8.1.0.beta1</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.osgi</groupId>
@@ -87,6 +84,13 @@
             <version>6.0.0</version>
             <scope>provided</scope>
         </dependency>
+        <!-- For compiling WidgetSet -->
+        <dependency>
+            <groupId>com.vaadin</groupId>
+            <artifactId>vaadin-client</artifactId>
+            <version>${vaadin.version}</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
 
@@ -100,6 +104,22 @@
                     <execution>
                         <goals>
                             <goal>bnd-process</goal>
+                        </goals>
+                        <configuration>
+
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.vaadin</groupId>
+                <artifactId>vaadin-maven-plugin</artifactId>
+                <version>${vaadin.plugin.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compile</goal>
+                            <goal>compile-theme</goal>
                         </goals>
                     </execution>
                 </executions>

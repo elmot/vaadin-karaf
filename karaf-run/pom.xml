@@ -5,16 +5,25 @@
     <parent>
         <artifactId>vaadin-karaf</artifactId>
         <groupId>org.vaadin</groupId>
-        <version>1.0-SNAPSHOT</version>
+        <version>8.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>karaf-run</artifactId>
+    <name>Karaf Runner</name>
 
     <dependencies>
+        <!--Not a real dependency, but this makes sure if the bundle is built before running karaf-->
         <dependency>
             <groupId>org.vaadin</groupId>
-            <artifactId>vaadin-karaf-bundle</artifactId>
+            <artifactId>vaadin-karaf-bundle1</artifactId>
+            <version>${project.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <!--Not a real dependency, but this makes sure if the bundle is built before running karaf-->
+        <dependency>
+            <groupId>org.vaadin</groupId>
+            <artifactId>vaadin-karaf-bundle2</artifactId>
             <version>${project.version}</version>
             <scope>provided</scope>
         </dependency>
@@ -51,6 +60,9 @@
                 <version>4.0.8</version>
                 <executions>
                     <execution>
+                        <!--This should not be run directly, it is started as a background process with
+                        exec:exec goal
+                        -->
                         <id>run-karaf-server</id>
                         <phase/>
                         <goals>
@@ -75,12 +87,14 @@
                                 <command>feature:install http-whiteboard</command>
                                 <command>bundle:install -s mvn:org.jsoup/jsoup/1.8.3</command>
                                 <command>bundle:install -s mvn:com.vaadin.external/gentyref/1.2.0.vaadin1</command>
-                                <command>bundle:install -s mvn:com.vaadin/vaadin-shared/8.1.0.beta1</command>
-                                <command>bundle:install -s mvn:com.vaadin/vaadin-server/8.1.0.beta1</command>
-                                <command>bundle:install -s mvn:com.vaadin/vaadin-osgi-integration/8.1.0.beta1</command>
-                                <command>bundle:install -s mvn:com.vaadin/vaadin-client-compiled/8.1.0.beta1</command>
-                                <command>bundle:install -s mvn:com.vaadin/vaadin-themes/8.1.0.beta1</command>
-                                <command>bundle:install -s mvn:org.vaadin/vaadin-karaf-bundle/${project.version}
+                                <command>bundle:install -s mvn:com.vaadin/vaadin-shared/${vaadin.version}</command>
+                                <command>bundle:install -s mvn:com.vaadin/vaadin-server/${vaadin.version}</command>
+                                <command>bundle:install -s mvn:com.vaadin/vaadin-osgi-integration/${vaadin.version}</command>
+                                <command>bundle:install -s mvn:com.vaadin/vaadin-client-compiled/${vaadin.version}</command>
+                                <command>bundle:install -s mvn:com.vaadin/vaadin-themes/${vaadin.version}</command>
+                                <command>bundle:install -s mvn:org.vaadin/vaadin-karaf-bundle1/${project.version}
+                                </command>
+                                <command>bundle:install -s mvn:org.vaadin/vaadin-karaf-bundle2/${project.version}
                                 </command>
                             </commands>
                         </configuration>
