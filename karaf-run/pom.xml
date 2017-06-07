@@ -83,6 +83,7 @@
                             <delay>5</delay>
                             <attempts>10</attempts>
                             <commands>
+                                <command>shutdown -f +2</command>
                                 <command>feature:install http</command>
                                 <command>feature:install http-whiteboard</command>
                                 <command>bundle:install -s mvn:org.jsoup/jsoup/1.8.3</command>
