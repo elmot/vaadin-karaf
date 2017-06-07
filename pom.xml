@@ -10,8 +10,7 @@
     <name>Vaadin Karaf Test</name>
 
     <modules>
-        <module>vaadin-karaf-bundle1</module>
-        <module>vaadin-karaf-bundle2</module>
+        <module>vaadin-karaf-bundle-verify</module>
         <module>karaf-run</module>
     </modules>
 
@@ -20,7 +19,7 @@
     </prerequisites>
 
     <properties>
-        <vaadin.version>8.1-SNAPSHOT</vaadin.version>
+        <vaadin.version>8.1.0.beta1</vaadin.version>
         <vaadin.plugin.version>${vaadin.version}</vaadin.plugin.version>
         <karaf.plugin.version>4.0.8</karaf.plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -28,4 +27,47 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <vaadin.widgetset.mode>local</vaadin.widgetset.mode>
     </properties>
+    <profiles>
+        <profile>
+            <!-- Vaadin pre-release repositories -->
+            <id>vaadin-prerelease</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+
+            <repositories>
+                <repository>
+                    <id>vaadin-prereleases</id>
+                    <url>http://maven.vaadin.com/vaadin-prereleases</url>
+                </repository>
+                <repository>
+                    <id>vaadin-snapshots</id>
+                    <url>https://oss.sonatype.org/content/repositories/vaadin-snapshots/</url>
+                    <releases>
+                        <enabled>false</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                </repository>
+            </repositories>
+            <pluginRepositories>
+                <pluginRepository>
+                    <id>vaadin-prereleases</id>
+                    <url>http://maven.vaadin.com/vaadin-prereleases</url>
+                </pluginRepository>
+                <pluginRepository>
+                    <id>vaadin-snapshots</id>
+                    <url>https://oss.sonatype.org/content/repositories/vaadin-snapshots/</url>
+                    <releases>
+                        <enabled>false</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                </pluginRepository>
+            </pluginRepositories>
+        </profile>
+    </profiles>
+
 </project>

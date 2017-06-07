@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.vaadin</groupId>
         <artifactId>vaadin-karaf</artifactId>
-        <version>8.1-SNAPSHOT</version>
+        <version>8.1.0.beta1</version>
     </parent>
     <artifactId>vaadin-karaf-bundle1</artifactId>
     <packaging>jar</packaging>
@@ -43,6 +43,11 @@
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>3.0.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.vaadin</groupId>
+            <artifactId>vaadin-shared</artifactId>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -84,13 +89,17 @@
             <version>6.0.0</version>
             <scope>provided</scope>
         </dependency>
-        <!-- For compiling WidgetSet -->
         <dependency>
-            <groupId>com.vaadin</groupId>
-            <artifactId>vaadin-client</artifactId>
-            <version>${vaadin.version}</version>
-            <scope>provided</scope>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>1.0.0.GA</version>
         </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>4.3.2.Final</version>
+        </dependency>
+
     </dependencies>
 
 
@@ -108,19 +117,6 @@
                         <configuration>
 
                         </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>com.vaadin</groupId>
-                <artifactId>vaadin-maven-plugin</artifactId>
-                <version>${vaadin.plugin.version}</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>compile</goal>
-                            <goal>compile-theme</goal>
-                        </goals>
                     </execution>
                 </executions>
             </plugin>

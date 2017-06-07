@@ -1,0 +1,7 @@
+Bundle-Name: ${project.name}
+Bundle-Version: ${project.version}
+Bundle-SymbolicName: ${project.groupId}.${project.artifactId}
+Export-Package: com.vaadin.test.osgi.myapplication1
+Web-ContentPath: /myapp1
+Private-Package: javax.validation.*, org.hibernate.validator*,org.joda.time*
+Import-Package:javax.persistence;resolution:=optional,org.joda.time.*;resolution:=optional,*

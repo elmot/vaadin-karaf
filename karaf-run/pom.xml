@@ -5,7 +5,7 @@
     <parent>
         <artifactId>vaadin-karaf</artifactId>
         <groupId>org.vaadin</groupId>
-        <version>8.1-SNAPSHOT</version>
+        <version>8.1.0.beta1</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -13,20 +13,6 @@
     <name>Karaf Runner</name>
 
     <dependencies>
-        <!--Not a real dependency, but this makes sure if the bundle is built before running karaf-->
-        <dependency>
-            <groupId>org.vaadin</groupId>
-            <artifactId>vaadin-karaf-bundle1</artifactId>
-            <version>${project.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <!--Not a real dependency, but this makes sure if the bundle is built before running karaf-->
-        <dependency>
-            <groupId>org.vaadin</groupId>
-            <artifactId>vaadin-karaf-bundle2</artifactId>
-            <version>${project.version}</version>
-            <scope>provided</scope>
-        </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -93,9 +79,7 @@
                                 <command>bundle:install -s mvn:com.vaadin/vaadin-osgi-integration/${vaadin.version}</command>
                                 <command>bundle:install -s mvn:com.vaadin/vaadin-client-compiled/${vaadin.version}</command>
                                 <command>bundle:install -s mvn:com.vaadin/vaadin-themes/${vaadin.version}</command>
-                                <command>bundle:install -s mvn:org.vaadin/vaadin-karaf-bundle1/${project.version}
-                                </command>
-                                <command>bundle:install -s mvn:org.vaadin/vaadin-karaf-bundle2/${project.version}
+                                <command><![CDATA[bundle:install -s file:../vaadin-karaf-bundle-verify/target/vaadin-karaf-bundle1-${project.version}.jar]]>
                                 </command>
                             </commands>
                         </configuration>
